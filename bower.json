@@ -1,0 +1,16 @@
+{
+  "name": "fs-angular--time",
+  "description": "",
+  "main": [
+    "dist/time.js"
+  ],
+  "authors": [
+    "Firestitch Inc."
+  ],
+  "license": "MIT",
+  "ignore": [
+    "src",
+    ".gitignore"
+  ],
+  "private": false
+}

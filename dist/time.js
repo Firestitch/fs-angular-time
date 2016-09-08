@@ -1,3 +1,4 @@
+
 (function () {
     'use strict';
 
@@ -30,3 +31,12 @@
         };
     });
 })();
+
+angular.module('fs-angular-time').run(['$templateCache', function($templateCache) {
+  'use strict';
+
+  $templateCache.put('views/directives/time.html',
+    "time template"
+  );
+
+}]);

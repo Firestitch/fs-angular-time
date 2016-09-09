@@ -1,1 +1,5 @@
-time template
+<md-select>
+    <md-option ng-repeat="option in times" value="{{::option.value}}">
+        {{::option.label}}
+    </md-option>
+</md-select>

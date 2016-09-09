@@ -6,26 +6,35 @@
         return {
             templateUrl: 'views/directives/time.html',
             restrict: 'E',
-            scope: {
-               //selected: "@fsSelected"
-            },
+            replace: true,
+            link: function($scope, element, attr) {
+               
+               var day =  moment().startOf('day');
 
-            link: function($scope, element, attrs, ctrl, $transclude) {
-               /* $scope.items = [];
+                var times = [];
+                
+                var length  = 0;
+                
+                while (length<1440) {
 
-                $transclude(function(clone, scope) {
+                    var label = day.format('h:mm a');         
 
-                    angular.forEach(clone,function(el) {
-                        if(el.nodeName.match(/fs-tabnav-item/i)) {
-                            var path = el.getAttributeNode('fs-url') ? el.getAttributeNode('fs-url').nodeValue : '';
-                            $scope.items.push({ path: path, name: el.textContent });
-                        }
-                    });
-                });
+                    if(length==0) {
+                        
+                        label = 'midnight';
+                    } else if(length==720) {
+                        
+                        label = 'noon';
+                    }
 
-                $scope.redirect = function(path) {
-                    $location.path(path);
-                }*/
+                    times.push({ value: day.format('HH') + ':' + day.format('mm') + ':00', label: label });
+                    
+                    length += 15;
+                    
+                    day.add(15, 'minutes');
+                }
+                
+                $scope.times = times;
             }
         };
     });

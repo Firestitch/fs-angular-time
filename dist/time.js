@@ -7,34 +7,36 @@
         return {
             templateUrl: 'views/directives/time.html',
             restrict: 'E',
-            replace: true,
+            scope: {
+                model: '=ngModel'
+            },
             link: function($scope, element, attr) {
-               
+
                var day =  moment().startOf('day');
 
                 var times = [];
-                
+
                 var length  = 0;
-                
+
                 while (length<1440) {
 
-                    var label = day.format('h:mm a');         
+                    var label = day.format('h:mm a');
 
                     if(length==0) {
-                        
+
                         label = 'midnight';
                     } else if(length==720) {
-                        
+
                         label = 'noon';
                     }
 
                     times.push({ value: day.format('HH') + ':' + day.format('mm') + ':00', label: label });
-                    
+
                     length += 15;
-                    
+
                     day.add(15, 'minutes');
                 }
-                
+
                 $scope.times = times;
             }
         };
@@ -45,10 +47,14 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
   'use strict';
 
   $templateCache.put('views/directives/time.html',
-    "<md-select>\n" +
-    "    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\n" +
-    "        {{::option.label}}\n" +
-    "    </md-option>\n" +
+    "<md-select ng-model=\"model\" aria-label=\"time\">\r" +
+    "\n" +
+    "    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\r" +
+    "\n" +
+    "        {{::option.label}}\r" +
+    "\n" +
+    "    </md-option>\r" +
+    "\n" +
     "</md-select>"
   );
 

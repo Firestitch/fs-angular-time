@@ -4,6 +4,9 @@
   "main": [
     "dist/time.js"
   ],
+  "dependencies": {
+    "moment": ">=2.0.0"
+  },
   "authors": [
     "Firestitch Inc."
   ],

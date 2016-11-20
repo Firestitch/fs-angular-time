@@ -6,7 +6,8 @@
 
 
     $scope.text = '';
-    
+    $scope.disabled = 0;
+
     $scope.submit = function() {
         alert('submit');
     }

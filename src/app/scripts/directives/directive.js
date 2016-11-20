@@ -7,7 +7,8 @@
             templateUrl: 'views/directives/time.html',
             restrict: 'E',
             scope: {
-                model: '=ngModel'
+                model: '=ngModel',
+                disabled: '=ngDisabled'
             },
             link: function($scope, element, attr) {
 

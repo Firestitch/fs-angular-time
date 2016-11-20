@@ -8,7 +8,8 @@
             templateUrl: 'views/directives/time.html',
             restrict: 'E',
             scope: {
-                model: '=ngModel'
+                model: '=ngModel',
+                disabled: '=ngDisabled'
             },
             link: function($scope, element, attr) {
 
@@ -47,7 +48,7 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
   'use strict';
 
   $templateCache.put('views/directives/time.html',
-    "<md-select ng-model=\"model\" aria-label=\"time\">\r" +
+    "<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\">\r" +
     "\n" +
     "    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\r" +
     "\n" +

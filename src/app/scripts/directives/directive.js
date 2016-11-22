@@ -1,6 +1,16 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc directive
+     * @name fs.directives:fs-time
+     * @restrict E
+     * @param {object} ng-model The model object
+     * @param {expression} ng-disabled Used to disable the interface
+     * @param {string} fs-label The interface label
+     * @param {string} fs-class The class that is inserted into the md-input-container
+     */
+
     angular.module('fs-angular-time',[])
     .directive('fsTime', function($location) {
         return {
@@ -8,7 +18,9 @@
             restrict: 'E',
             scope: {
                 model: '=ngModel',
-                disabled: '=ngDisabled'
+                disabled: '=ngDisabled',
+                label: '@?fsLabel',
+                class: '@?fsClass'
             },
             link: function($scope, element, attr) {
 

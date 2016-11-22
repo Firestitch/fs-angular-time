@@ -2,6 +2,16 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc directive
+     * @name fs.directives:fs-time
+     * @restrict E
+     * @param {object} ng-model The model object
+     * @param {expression} ng-disabled Used to disable the interface
+     * @param {string} fs-label The interface label
+     * @param {string} fs-class The class that is inserted into the md-input-container
+     */
+
     angular.module('fs-angular-time',[])
     .directive('fsTime', function($location) {
         return {
@@ -9,7 +19,9 @@
             restrict: 'E',
             scope: {
                 model: '=ngModel',
-                disabled: '=ngDisabled'
+                disabled: '=ngDisabled',
+                label: '@?fsLabel',
+                class: '@?fsClass'
             },
             link: function($scope, element, attr) {
 
@@ -48,15 +60,21 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
   'use strict';
 
   $templateCache.put('views/directives/time.html',
-    "<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\">\r" +
+    "<md-input-container class=\"{{class}}\">\r" +
     "\n" +
-    "    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\r" +
+    "\t<label ng-show=\"label\">{{label}}</label>\r" +
     "\n" +
-    "        {{::option.label}}\r" +
+    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\">\r" +
     "\n" +
-    "    </md-option>\r" +
+    "\t    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\r" +
     "\n" +
-    "</md-select>"
+    "\t        {{::option.label}}\r" +
+    "\n" +
+    "\t    </md-option>\r" +
+    "\n" +
+    "\t</md-select>\r" +
+    "\n" +
+    "</md-input-container>"
   );
 
 }]);

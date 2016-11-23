@@ -9,6 +9,7 @@
      * @param {expression} ng-disabled Used to disable the interface
      * @param {string} fs-label The interface label
      * @param {string} fs-class The class that is inserted into the md-input-container
+     * @param {string} fs-hint The interface note
      */
 
     angular.module('fs-angular-time',[])
@@ -20,7 +21,8 @@
                 model: '=ngModel',
                 disabled: '=ngDisabled',
                 label: '@?fsLabel',
-                class: '@?fsClass'
+                class: '@?fsClass',
+                hint: '@?fsHint'
             },
             link: function($scope, element, attr) {
 

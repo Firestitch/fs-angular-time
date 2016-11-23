@@ -10,6 +10,7 @@
      * @param {expression} ng-disabled Used to disable the interface
      * @param {string} fs-label The interface label
      * @param {string} fs-class The class that is inserted into the md-input-container
+     * @param {string} fs-hint The interface note
      */
 
     angular.module('fs-angular-time',[])
@@ -21,7 +22,8 @@
                 model: '=ngModel',
                 disabled: '=ngDisabled',
                 label: '@?fsLabel',
-                class: '@?fsClass'
+                class: '@?fsClass',
+                hint: '@?fsHint'
             },
             link: function($scope, element, attr) {
 
@@ -60,20 +62,14 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
   'use strict';
 
   $templateCache.put('views/directives/time.html',
-    "<md-input-container class=\"{{class}}\">\r" +
-    "\n" +
-    "\t<label ng-show=\"label\">{{label}}</label>\r" +
-    "\n" +
-    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\">\r" +
-    "\n" +
-    "\t    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\r" +
-    "\n" +
-    "\t        {{::option.label}}\r" +
-    "\n" +
-    "\t    </md-option>\r" +
-    "\n" +
-    "\t</md-select>\r" +
-    "\n" +
+    "<md-input-container class=\"{{class}}\">\n" +
+    "\t<label ng-show=\"label\">{{label}}</label>\n" +
+    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\">\n" +
+    "\t    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\n" +
+    "\t        {{::option.label}}\n" +
+    "\t    </md-option>\n" +
+    "\t</md-select>\n" +
+    "        <span ng-show=\"hint\" class=\"hint\">{{hint}}</span>\n" +
     "</md-input-container>"
   );
 

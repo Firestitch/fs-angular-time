@@ -5,7 +5,8 @@
     "dist/time.js"
   ],
   "dependencies": {
-    "moment": ">=2.0.0"
+    "moment": ">=2.0.0",
+    "fs-angular-util": "latest"
   },
   "authors": [
     "Firestitch Inc."

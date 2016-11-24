@@ -12,8 +12,8 @@
      * @param {string} fs-hint The interface note
      */
 
-    angular.module('fs-angular-time',[])
-    .directive('fsTime', function($location) {
+    angular.module('fs-angular-time', ['fs-angular-util'])
+    .directive('fsTime', function(fsUtil) {
         return {
             templateUrl: 'views/directives/time.html',
             restrict: 'E',
@@ -21,10 +21,13 @@
                 model: '=ngModel',
                 disabled: '=ngDisabled',
                 label: '@?fsLabel',
+                name: '@?fsName',
                 class: '@?fsClass',
+                required: '=fsRequired',
                 hint: '@?fsHint'
             },
             link: function($scope, element, attr) {
+               $scope.name = $scope.name ? $scope.name : 'input_' + fsUtil.guid();
 
                var day =  moment().startOf('day');
 

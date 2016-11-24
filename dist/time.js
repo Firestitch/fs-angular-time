@@ -13,8 +13,8 @@
      * @param {string} fs-hint The interface note
      */
 
-    angular.module('fs-angular-time',[])
-    .directive('fsTime', function($location) {
+    angular.module('fs-angular-time', ['fs-angular-util'])
+    .directive('fsTime', function(fsUtil) {
         return {
             templateUrl: 'views/directives/time.html',
             restrict: 'E',
@@ -22,10 +22,13 @@
                 model: '=ngModel',
                 disabled: '=ngDisabled',
                 label: '@?fsLabel',
+                name: '@?fsName',
                 class: '@?fsClass',
+                required: '=fsRequired',
                 hint: '@?fsHint'
             },
             link: function($scope, element, attr) {
+               $scope.name = $scope.name ? $scope.name : 'input_' + fsUtil.guid();
 
                var day =  moment().startOf('day');
 
@@ -64,7 +67,7 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
   $templateCache.put('views/directives/time.html',
     "<md-input-container class=\"{{class}}\">\n" +
     "\t<label ng-show=\"label\">{{label}}</label>\n" +
-    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\">\n" +
+    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\" ng-required=\"required\" name=\"{{name}}\">\n" +
     "\t    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\n" +
     "\t        {{::option.label}}\n" +
     "\t    </md-option>\n" +

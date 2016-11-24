@@ -1,6 +1,6 @@
 <md-input-container class="{{class}}">
 	<label ng-show="label">{{label}}</label>
-	<md-select ng-model="model" aria-label="time" ng-disabled="disabled">
+	<md-select ng-model="model" aria-label="time" ng-disabled="disabled" ng-required="required" name="{{name}}">
 	    <md-option ng-repeat="option in times" value="{{::option.value}}">
 	        {{::option.label}}
 	    </md-option>

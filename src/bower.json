@@ -10,6 +10,7 @@
     "angular-material": "1.0.5",
     "angular-ui-router": "0.2.15",
     "fs-boilerplate-styles": "latest",
+    "fs-angular-util": "latest",
     "moment": ">=2.0.0"
   },
   "devDependencies": {

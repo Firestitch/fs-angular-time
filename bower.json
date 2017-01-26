@@ -6,7 +6,7 @@
   ],
   "dependencies": {
     "moment": ">=2.0.0",
-    "fs-angular-util": "latest"
+    "fs-angular-util": "^1.0.0"
   },
   "authors": [
     "Firestitch Inc."

@@ -1,5 +1,4 @@
 
-
 (function () {
     'use strict';
 
@@ -25,15 +24,17 @@
                 label: '@?fsLabel',
                 name: '@?fsName',
                 class: '@?fsClass',
-                required: '=fsRequired',
                 hint: '@?fsHint'
             },
             controller: ['$scope','fsUtil',function($scope, fsUtil) {
             	$scope.name = 'input_' + fsUtil.guid();
+
             }],
             link: function($scope, element, attr) {
 
-            	angular.element(element).data('scope',$scope);
+            	$scope.required = attr.fsRequired;
+
+				angular.element(element).data('scope',$scope);
 
                	var day =  moment().startOf('day');
                 var times = [];
@@ -68,7 +69,7 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
     "\n" +
     "\t<label ng-show=\"label\">{{label}}</label>\r" +
     "\n" +
-    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\" ng-required=\"required\" name=\"{{name}}\">\r" +
+    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\" fs-required=\"{{required}}\" name=\"{{name}}\">\r" +
     "\n" +
     "\t    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\r" +
     "\n" +
@@ -78,7 +79,7 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
     "\n" +
     "\t</md-select>\r" +
     "\n" +
-    "        <span ng-show=\"hint\" class=\"hint\">{{hint}}</span>\r" +
+    "    <span ng-show=\"hint\" class=\"hint\">{{hint}}</span>\r" +
     "\n" +
     "</md-input-container>"
   );

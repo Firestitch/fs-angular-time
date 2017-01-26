@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
 
@@ -24,15 +23,17 @@
                 label: '@?fsLabel',
                 name: '@?fsName',
                 class: '@?fsClass',
-                required: '=fsRequired',
                 hint: '@?fsHint'
             },
             controller: ['$scope','fsUtil',function($scope, fsUtil) {
             	$scope.name = 'input_' + fsUtil.guid();
+
             }],
             link: function($scope, element, attr) {
 
-            	angular.element(element).data('scope',$scope);
+            	$scope.required = attr.fsRequired;
+
+				angular.element(element).data('scope',$scope);
 
                	var day =  moment().startOf('day');
                 var times = [];

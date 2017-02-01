@@ -33,13 +33,6 @@
             }],
             link: function($scope, element, attr) {
 
-	            //HACK to populate required attribute for an input. If populated in the template a template compile error is thrown
-	            if($scope.required) {
-	            	var input = angular.element(element[0].querySelector('md-select'));
-	            	//HACK angular.element(input).attr('required','something-else') will produce required="required"
-	            	input[0].setAttribute('required',$scope.required);
-	            }
-
                	var day =  moment().startOf('day');
                 var times = [];
                 var length  = 0;

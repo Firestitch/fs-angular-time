@@ -6,6 +6,7 @@
 
 
     $scope.text = '';
+    $scope.required = true
     $scope.disabled = 0;
 
     $scope.submit = function() {

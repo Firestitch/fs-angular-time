@@ -34,13 +34,6 @@
             }],
             link: function($scope, element, attr) {
 
-	            //HACK to populate required attribute for an input. If populated in the template a template compile error is thrown
-	            if($scope.required) {
-	            	var input = angular.element(element[0].querySelector('md-select'));
-	            	//HACK angular.element(input).attr('required','something-else') will produce required="required"
-	            	input[0].setAttribute('required',$scope.required);
-	            }
-
                	var day =  moment().startOf('day');
                 var times = [];
                 var length  = 0;
@@ -74,7 +67,7 @@ angular.module('fs-angular-time').run(['$templateCache', function($templateCache
     "\n" +
     "\t<label ng-show=\"label\">{{label}}</label>\r" +
     "\n" +
-    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\" name=\"{{name}}\">\r" +
+    "\t<md-select ng-model=\"model\" aria-label=\"time\" ng-disabled=\"disabled\" required-condition=\"{{required}}\" name=\"{{name}}\">\r" +
     "\n" +
     "\t    <md-option ng-repeat=\"option in times\" value=\"{{::option.value}}\">\r" +
     "\n" +
